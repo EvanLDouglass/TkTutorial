@@ -1,10 +1,9 @@
 '''This file is part of a Tkinter course on LinkedIn Learning. It is
 intended to test my knowledge of the information presented in the course
-by building a simple comment form for an outdoor tours company. I additionally
-built it with an OOP approach.
+by building a simple comment form for an outdoor tours company.
 Author: Evan L. Douglass'''
 
-from tkinter import *
+import tkinter as tk
 from tkinter import ttk
 
 class CommentForm(ttk.Frame):
@@ -14,7 +13,7 @@ class CommentForm(ttk.Frame):
         '''Sets up all widgets for the app.'''
         self.master = master
         # Heading
-        self.logo = PhotoImage(file="C:\\Users\\Evan\\Code\\Python\\TkTutorial\\Images\\tour_logo.gif").subsample(2, 2)
+        self.logo = tk.PhotoImage(file="C:\\Users\\Evan\\Code\\Python\\TkTutorial\\Images\\tour_logo.gif").subsample(2, 2)
         self.content_title = ttk.Label(master, text="Desert to Sea Tour", 
                                                image=self.logo,
                                                compound='left',
@@ -23,15 +22,15 @@ class CommentForm(ttk.Frame):
         
         # Name                                 
         self.name_label = ttk.Label(master, text="Name")
-        self.name_entry = Entry(master, font=('serif', 10))
+        self.name_entry = tk.Entry(master, font=('serif', 10))
         
         # Email
         self.email_label = ttk.Label(master, text="Email")
-        self.email_entry = Entry(master, font=('serif', 10))
+        self.email_entry = tk.Entry(master, font=('serif', 10))
 
         # Comments (uses text.get for retrieval)
         self.comment_label = ttk.Label(master, text="Comments")
-        self.comment_entry = Text(master, height=10, width=50, wrap='word',
+        self.comment_entry = tk.Text(master, height=10, width=50, wrap='word',
                                           font=('serif', 10))
 
         # Buttons
@@ -77,12 +76,12 @@ class CommentForm(ttk.Frame):
 
     def disable(self):
         '''Disable entry field areas.'''
-        self.name_entry.config(state=DISABLED)
-        self.email_entry.config(state=DISABLED)
+        self.name_entry.config(state=tk.DISABLED)
+        self.email_entry.config(state=tk.DISABLED)
         # Text default disabled color is different than entry, had to set manually.
-        self.comment_entry.config(state=DISABLED, background='#f0f0f0')
-        self.submit.config(state=DISABLED)
-        self.cancel.config(state=DISABLED)
+        self.comment_entry.config(state=tk.DISABLED, background='#f0f0f0')
+        self.submit.config(state=tk.DISABLED)
+        self.cancel.config(state=tk.DISABLED)
 
     def grid_all(self):
         '''Organizes app widgets in the master widget.'''
@@ -99,11 +98,11 @@ class CommentForm(ttk.Frame):
         # Comment box
         self.comment_label.grid(row=3, column=0)
         self.comment_entry.grid(row=3, column=1, pady=(0, 5), sticky='nesw')
-        
+
         # Buttons
         self.btn_frm.grid(row=4, column=0, columnspan=2)
-        self.submit.pack(side=LEFT)
-        self.cancel.pack(side=LEFT)
+        self.submit.pack(side=tk.LEFT)
+        self.cancel.pack(side=tk.LEFT)
 
         # Set focus to name entry
         self.name_entry.focus()
@@ -117,7 +116,7 @@ class CommentForm(ttk.Frame):
 ########## Run Application ##########
 
 if __name__ == '__main__':
-    root = Tk()
+    root = tk.Tk()
     root.title("Explore California Touring Company")
 
     content = ttk.Frame(root, padding=5)
